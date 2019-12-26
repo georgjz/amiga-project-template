@@ -9,11 +9,6 @@ BUILDNAME	= example  				# name of the final ROM
 ###### UNLESS YOU KNOW WHAT YOU ARE DOING ######
 ################################################
 
-# determine which version to build
-ifneq ($(BUILD),debug)
-    BUILD = release
-endif
-
 # Assembler and Linker
 AS 		= vasmm68k_mot
 ASFLAGS	= -Fvobj $(INCARGS) # $(BINARGS)
@@ -23,7 +18,7 @@ LDFLAGS = -s -S -b amigahunk
 # Directories
 SRCDIR	 = src
 OBJDIR	 = obj
-BUILDDIR = build/$(BUILD)
+BUILDDIR = build
 
 # Make does not offer a recursive wildcard function, so here's one:
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
@@ -43,9 +38,6 @@ vpath %.s $(dir $(SOURCES))					# add source directories to vpath
 EXECUTABLE = $(BUILDDIR)/$(BUILDNAME)
 
 all: dir $(EXECUTABLE)
-
-debug: $(ASFLAGS) += -g -W2
-debug: dir $(EXECUTABLE)
 
 $(EXECUTABLE): $(SOBJ)
 	$(LD) $(LDFLAGS) -o $@ $^

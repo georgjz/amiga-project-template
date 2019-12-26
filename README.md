@@ -17,9 +17,8 @@ cd amiga-project-template
 make
 ```
 
-The makefile will look for all source files ending with `*.s` in the directory `src/` and all its subdirectories. These files are translated into object files and listings that will be placed in the directory `obj/`. Finally, the linker will build the final executable and place it in `build/release`.
+The makefile will look for all source files ending with `*.s` in the directory `src/` and all its subdirectories. These files are translated into object files and listings that will be placed in the directory `obj/`. Finally, the linker will build the final executable and place it in `build/`.
 
-**NOTE**: There's no difference between the `debug` and `release` configuration as of now. Standard is `release`. I plan add a `debug` configuration that will allow for debugging on an actual Amiga.
 
 ## License 
 
