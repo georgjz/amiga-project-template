@@ -7,34 +7,33 @@ endif()
 # TODO: Add functionality to automatically detect compilers for cross-platform
 #       support.
 # Set compilers
-set( CMAKE_C_COMPILER gcc )
-set( CMAKE_CXX_COMPILER g++ )
+# set( CMAKE_C_COMPILER gcc )
+# set( CMAKE_CXX_COMPILER g++ )
 
 # Building the Scheme examples is off by default
-option( BUILD_SCM_EXAMPLES "Build the Scheme code examples with Gambit Scheme." OFF )
+# option( BUILD_SCM_EXAMPLES "Build the Scheme code examples with Gambit Scheme." OFF )
 
 # Give the project a name
-project( raylib-gambit-scheme
+project( amiga-project-template
     VERSION 0.1.0
-    DESCRIPTION "A simple Gambit Scheme binding for raylib" )
+    DESCRIPTION "A simple project template for programming in assembly for Amiga machines." )
 
 # Add external dependencies to project
-add_subdirectory( extern ) 
+# add_subdirectory( extern ) 
 
-# Build simple Gambit Scheme program
+# Add the VASM module to CMake
 list( APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" )
-enable_language( Gambit )
+enable_language( VASM )
 add_executable( ${PROJECT_NAME} "" )
-add_dependencies( ${PROJECT_NAME} raylib )
 add_subdirectory( src )
 
 # Copy game assets
-add_custom_target(
-    copy-assets ALL
-    COMMENT "Copying assets"
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_CURRENT_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/assets )
+# add_custom_target(
+#     copy-assets ALL
+#     COMMENT "Copying assets"
+#     COMMAND ${CMAKE_COMMAND} -E copy_directory
+#     ${CMAKE_CURRENT_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/assets )
 
-if( ${BUILD_SCM_EXAMPLES} )
-   add_subdirectory( examples ) 
-endif()
+# if( ${BUILD_SCM_EXAMPLES} )
+#    add_subdirectory( examples ) 
+# endif()
