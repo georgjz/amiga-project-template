@@ -1,11 +1,11 @@
 # How to build objects 
 set( CMAKE_VASM_COMPILE_OBJECT
-    "<CMAKE_VASM_COMPILER> -Fvobj -o <OBJECT> <SOURCE>"
+    "<CMAKE_VASM_COMPILER> <FLAGS> -o <OBJECT> <SOURCE>"
 )
 
 # How to build executables 
 set( CMAKE_VASM_LINK_EXECUTABLE 
-    "vlink -s -S -b amigahunk -o <TARGET> <OBJECTS>"
+    "vlink <LINK_FLAGS> -o <TARGET> <OBJECTS>"
 )
 
 
